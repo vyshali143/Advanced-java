@@ -1,0 +1,14 @@
+package com.sathya.bootex;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+public class 
+{
+	
+
+@RequestMapping("/test");
+public String display()
+{
+	return "data.html";
+}
+}

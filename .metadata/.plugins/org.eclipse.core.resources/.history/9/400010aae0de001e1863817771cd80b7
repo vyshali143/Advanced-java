@@ -1,0 +1,86 @@
+package com.sathya.propro;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.IOUtils;
+
+
+@WebServlet("/ProServlet")
+@MultipartConfig
+public class ProServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	
+    public ProServlet() {
+        super();
+    }
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String proId=request.getParameter("proId");
+		String proName=request.getParameter("ProName");
+		
+		double proPrice=Double.parseDouble(request.getParameter("proPrice"));
+		String proBrand=request.getParameter("proBrand");
+		                    
+		String proMadeIn=request.getParameter("proMadeIn");
+		Date Manufacture=Date.valueOf(request.getParameter("Manufacture"));
+		Date Expire=Date.valueOf(request.getParameter("Expiry"));
+		Part part=request.getPart("proImage");
+		InputStream proImage =part.getInputStream();
+		
+		//conversion of InputStream into byte[]
+		byte[] proImage1=IOUtils.toByteArray(proImage);
+		
+		Part part1=request.getPart("proAudio");
+        InputStream inputStream1 =part1.getInputStream();
+		byte[] proAudio=IOUtils.toByteArray(inputStream1);
+		
+		Part part2=request.getPart("proVideo");
+        InputStream inputSream2 =part2.getInputStream();
+	
+	//conversion of InputStream into byte[]
+	byte[] proVideo=IOUtils.toByteArray(inputSream2);
+			
+		Product pro=new Product();
+		pro.setProId(proId);
+		pro.setProName(proName);
+		pro.setProPrice(proPrice); 
+		pro.setProBrand(proBrand);
+		pro.setProMadeIn(proMadeIn);
+		pro.setManufacture(Manufacture);
+		pro.setExpiry(Expire);
+		pro.setProImage(proImage1);
+		pro.setProAudio(proAudio);
+		pro.setProVideo(proVideo);
+		
+		ProductDao dao=new ProductDao();
+		int result =dao.saveProduct(pro);
+		
+		if(result==1)
+		{
+			request.setAttribute("saveResult",result);
+			RequestDispatcher dsp=request.getRequestDispatcher("Product.jsp");
+			dsp.forward(request,response);
+		}
+		else {
+			response.setContentType("text/html");
+			PrintWriter writer=response.getWriter();
+			writer.println("Data Insertion failed check once..........."+result);
+			
+			RequestDispatcher dsp=request.getRequestDispatcher("EditProductServlet.jsp");
+			dsp.include(request, response);
+			
+		}
+		
+	}
+
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>color</title>
+<style>
+	h1{
+		color:green;
+	}
+	h2{
+		color:rgb(155,235,250);
+	}
+	h3{
+		color:#ff00;
+	}
+	h4{
+		color:hsl(35,60%,70%);
+	}
+</style>
+</head>
+<body>
+<h1>welcome to sathyatech</h1>
+<h2>welcome to sathyatech</h2>
+<h3>welcome to sathyatech</h3>
+<h4>welcome to sathyatech</h4>
+</body>
+</html>
+package com.sathya.form;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/Cookies1")
+public class Cookies1 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    public Cookies1() {
+    }
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//get the data fromclient
+		String name=request.getParameter("UserName");
+		String age=request.getParameter("Age");
+		//create the cookies
+		Cookie cookie1=new Cookie("UserName",name);
+		Cookie cookie2=new Cookie("Age",age);
+		//add the cookies into resopnse object
+		response.addCookie(cookie1);
+		response.addCookie(cookie2);
+		//give the next from to the client
+		RequestDispatcher dispatcher=request.getRequestDispatcher("Form2.html");
+		dispatcher.forward(request,response);
+	}
+
+}
+package com.sathya.form;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("/Cookie2")
+public class Cookie2 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+    public Cookie2() {
+        super();
+    }
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//get the data fromclient
+				String Qualification=request.getParameter("Qualification");
+				String Designation=request.getParameter("Designation");
+				//create the cookies object
+				Cookie cookie3=new Cookie("Qualification",Qualification);
+				Cookie cookie4=new Cookie("Designation",Designation);
+				//add the cookies into resopnse object
+				response.addCookie(cookie3);
+				response.addCookie(cookie4);
+				//give the next from to the client
+				RequestDispatcher dispatcher=request.getRequestDispatcher("Form3.html");
+				dispatcher.forward(request,response);
+	}
+
+}
+package com.sathya.form;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/Cookies3")
+public class Cookies3 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+   
+    public Cookies3() {
+        super();
+    }
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Cookie[] cookies=request.getCookies();
+		response.setContentType("text/html");
+		PrintWriter writer=response.getWriter();
+		writer.println("<html>");
+		writer.println("<body>");
+		writer.println("<pre color='pink'>");
+		writer.println("User Name"+cookies[0]);
+		writer.println("Age"+cookies[1]);
+		writer.println("Qualification"+cookies[2]);
+		writer.println("Deseignation"+cookies[3]);
+		writer.println("Email"+request.getParameter("EmailId"));
+		writer.println("Mobile"+request.getParameter("Mobile"));
+		writer.println("</pre>");
+		writer.println("</body>");
+		writer.println("</html>");
+	}
+
+}

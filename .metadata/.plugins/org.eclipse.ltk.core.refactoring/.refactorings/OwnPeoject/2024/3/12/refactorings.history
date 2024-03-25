@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;OwnPeoject/src/main/webapp/Shoppipng.html&apos; to &apos;Shopping.html&apos;" description="Rename resource &apos;Shoppipng.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/Shoppipng.html" name="Shopping.html" stamp="1710785780960" updateReferences="true"/>
+</session>

@@ -1,0 +1,91 @@
+package com.sathya.propro;
+import java.sql.Date;
+public class Product {
+	private String proId;
+	private String proName;
+	private double ProPrice;
+	private String ProBrand;
+	
+	private String ProMadeIn;
+	private Date Manufacture;
+	private Date Expiry;
+	private byte[] proImage;
+	private byte[]ProAudio;
+	private byte[] ProVideo;
+	public Product(String proId, String proName, double proPrice, String proBrand, String proMadeIn, Date manufacture,
+			Date expiry, byte[] proImage, byte[] proAudio, byte[] proVideo) {
+		super();
+		this.proId = proId;
+		this.proName = proName;
+		this.ProPrice = proPrice;
+		this.ProBrand = proBrand;
+		this.ProMadeIn = proMadeIn;
+		this.Manufacture = manufacture;
+		this.Expiry = expiry;
+		this.proImage = proImage;
+		this.proAudio = proAudio;
+		this.proVideo = proVideo;
+	}
+	public String getProId() {
+		return proId;
+	}
+	public void setProId(String proId) {
+		this.proId = proId;
+	}
+	public String getProName() {
+		return proName;
+	}
+	public void setProName(String proName) {
+		this.proName = proName;
+	}
+	public double getProPrice() {
+		return ProPrice;
+	}
+	public void setProPrice(double proPrice) {
+		ProPrice = proPrice;
+	}
+	public String getProBrand() {
+		return ProBrand;
+	}
+	public void setProBrand(String proBrand) {
+		ProBrand = proBrand;
+	}
+	public String getProMadeIn() {
+		return ProMadeIn;
+	}
+	public void setProMadeIn(String proMadeIn) {
+		ProMadeIn = proMadeIn;
+	}
+	public Date getManufacture() {
+		return Manufacture;
+	}
+	public void setManufacture(Date manufacture) {
+		Manufacture = manufacture;
+	}
+	public Date getExpiry() {
+		return Expiry;
+	}
+	public void setExpiry(Date expiry) {
+		Expiry = expiry;
+	}
+	public byte[] getProImage() {
+		return proImage;
+	}
+	public void setProImage(byte[] proImage) {
+		this.proImage = proImage;
+	}
+	public byte[] getProAudio() {
+		return proAudio;
+	}
+	public void setProAudio(byte[] proAudio) {
+		this.proAudio = proAudio;
+	}
+	public byte[] getProVideo() {
+		return proVideo;
+	}
+	public void setProVideo(byte[] proVideo) {
+		this.proVideo = proVideo;
+	}
+	public Product(){
+	}
+	}

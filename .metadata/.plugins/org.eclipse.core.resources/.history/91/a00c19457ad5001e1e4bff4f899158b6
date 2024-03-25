@@ -1,0 +1,12 @@
+function ReverseStr()
+{
+	// read the dollar store thr vaariable
+	const String=document.getElementById('String').value;
+	
+	//convert the Dollar into Indian Rupee
+	const Reversestring=reverse(String);
+	
+	//set the output to Indian Rupee field
+	document.getElementById('Reversestring').value=Reversestring;
+	
+}

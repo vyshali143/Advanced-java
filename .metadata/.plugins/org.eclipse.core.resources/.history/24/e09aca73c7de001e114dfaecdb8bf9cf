@@ -1,0 +1,10 @@
+package pp;
+
+public class String1 {
+	public static void main(String args[])
+	{
+ String s="1,2,a,v,h,";
+ System.out.println(s);
+ 
+}
+}

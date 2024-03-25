@@ -1,0 +1,184 @@
+package com.sathya.project;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+ 
+public class ProductDao {
+
+public  int save(Productc pro){
+	int count1=0;
+Connection connect=null;
+PreparedStatement pps=null;	
+	try {
+	connect=Databasepro.createConnection();
+    pps=connect.prepareStatement("insert into product values(?,?,?,?,?,?,?,?,?,?)");
+	
+pps.setString(1, pro.getProId());
+pps.setString(2,pro.getProName());
+pps.setDouble(3,pro.getProPrice());
+pps.setString(4,pro.getProBrand());
+pps.setString(5,pro.getProMadeIn());
+pps.setDate(6,pro.getManufacture());
+pps.setDate(7,pro.getExpiry());
+pps.setBytes(8,pro.getProImage());
+pps.setBytes(9, pro.getProAudio());
+pps.setBytes(10,pro.getProVideo());
+
+count1= pps.executeUpdate();
+	}
+catch(SQLException e)
+{
+	e.printStackTrace();
+}
+	finally {
+		if(pps!=null)
+			try {
+				pps.close();
+			} 
+		catch (SQLException e) 
+		{
+				e.printStackTrace();
+			}
+		
+		if(connect!=null)
+			try {
+				connect.close();
+			} 
+		catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+	}
+	return count1;
+}
+public List<Productc> findAll() 
+{
+	List<Productc> products =new ArrayList<Productc>();
+	  
+	try(Connection connect=Databasepro.createConnection(); 
+			Statement statement=connect.createStatement()) 
+	{
+	ResultSet rs=statement.executeQuery("select * from product");
+	while(rs.next())
+	{
+		 Productc product=new Productc();
+			product.setProId(rs.getString("proId"));
+			product.setProName(rs.getString("ProName"));		
+			product.setProPrice(rs.getDouble("ProPrice"));
+			product.setProBrand(rs.getString("proBrand"));
+			product.setProMadeIn(rs.getString("proMadeIn"));
+			product.setManufacture(rs.getDate("Manufacture"));
+			product.setExpiry(rs.getDate("Expiry"));
+			product.setProImage(rs.getBytes("proImage"));
+			product.setProAudio(rs.getBytes("proAudio"));
+			product.setProVideo(rs.getBytes("ProVideo"));
+			products.add(product);
+		   }
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return products;
+	}
+	public int deleteById(String proid) 
+	{
+		int count=0;
+		try(Connection connect=Databasepro.createConnection();
+				PreparedStatement pps=connect.prepareStatement("delete from Product where proId=?"))
+		{
+		pps.setString(1, proid);
+		count=pps.executeUpdate();
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return count;
+	}
+	public Productc findById(String proId)
+	{
+		Productc product=null;
+		Connection connect=null;
+		PreparedStatement pps=null;
+		try {
+			connect=DriverManager.getConnection("Databasepro");
+			pps=connect.prepareStatement("select * from Product where proId=?");
+			
+			pps.setString(1, proId);
+			
+			ResultSet rs=pps.executeQuery();
+			
+			if(rs.next())
+			{
+				 product=new Productc();
+				product.setProId(rs.getString("proId"));
+				product.setProName(rs.getString("ProName"));	
+				product.setProPrice(rs.getDouble("ProPrice"));
+				product.setProBrand(rs.getString("proBrand"));
+				product.setProMadeIn(rs.getString("proMadeIn"));
+				product.setManufacture(rs.getDate("Manufacture"));
+				product.setExpiry(rs.getDate("Expiry"));
+				product.setProImage(rs.getBytes("proImage"));
+				product.setProAudio(rs.getBytes("proAudio"));
+				product.setProVideo(rs.getBytes("ProVideo"));
+				
+			}
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return product;
+	}
+
+		public int updateById(Productc product)
+		{
+			String sql="UPDATE Product SET  proName=?,ProPrice=?,ProBrand=?,ProMadeIn=?,Manufacture=?,Expiry=?,ProImage=?,ProAudio=?,ProVideo=? where proId=?";
+			int product1=0;
+			
+			try (Connection connect=Databasepro.createConnection();
+			PreparedStatement pps=connect.prepareStatement(sql))
+			{
+				Productc pro=new Productc();
+				
+				pps.setString(1,pro.getProName());
+				pps.setDouble(2,pro.getProPrice());
+				pps.setString(3,pro.getProBrand());
+				pps.setString(4,pro.getProMadeIn());
+				pps.setDate(5,pro.getManufacture());
+				pps.setDate(6,pro.getExpiry());
+				pps.setBytes(7,pro.getProImage());
+				pps.setBytes(8, pro.getProAudio());
+				pps.setBytes(9,pro.getProVideo());
+				pps.setString(10, pro.getProId());
+				
+					product1=pps.executeUpdate();
+				}
+			catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
+			return product1;
+		}
+		public int saveProduct(Productc pro) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+}
+
+	
+	
+		
+	

@@ -1,0 +1,64 @@
+package com.sathya.propro;
+import java.sql.Date;
+public class Product {
+	private String proId;
+	private String proName;
+	private double ProPrice;
+	private String ProBrand;
+	
+	private String ProMadeIn;
+	private Date Manufacture;
+	private Date Expiry;
+	private byte[] proImage;
+	
+	
+	public String getProId() {
+		return proId;
+	}
+	public void setProId(String proId) {
+		this.proId = proId;
+	}
+	public String getProName() {
+		return proName;
+	}
+	public void setProName(String proName) {
+		this.proName = proName;
+	}
+	public double getProPrice() {
+		return ProPrice;
+	}
+	public void setProPrice(double proPrice) {
+		this.ProPrice = proPrice;
+	}
+	public String getProBrand() {
+		return ProBrand;
+	}
+	public void setProBrand(String proBrand) {
+		this.ProBrand = proBrand;
+	}
+	public String getProMadeIn() {
+		return ProMadeIn;
+	}
+	public void setProMadeIn(String proMadeIn) {
+		this.ProMadeIn = proMadeIn;
+	}
+	public Date getManufacture() {
+		return Manufacture;
+	}
+	public void setManufacture(Date manufacture) {
+		this.Manufacture = manufacture;
+	}
+	public Date getExpiry() {
+		return Expiry;
+	}
+	public void setExpiry(Date expiry) {
+		this.Expiry = expiry;
+	}
+	public byte[] getProImage() {
+		return proImage;
+	}
+	public void setProImage(byte[] proImage) {
+		this.proImage = proImage;
+	}
+}
+	

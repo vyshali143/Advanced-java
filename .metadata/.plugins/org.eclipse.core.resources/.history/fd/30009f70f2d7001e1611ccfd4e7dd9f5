@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Palindrome</title>
+     <script type="text/javascript" src="Palindrome.js"></script>
+</head>
+<body>
+	<form>
+	<label>Number</label>
+		<input type="text" id="Number" oninput="ReverseNumber()" required>
+		<br>
+		
+		<label>ReverseNumber</label>
+		<input type="text" id="Reversenumber" readonly>
+		<br>
+</form>
+</body>
+</html>
+	
+<html>
+<head>
+	

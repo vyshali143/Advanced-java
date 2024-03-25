@@ -1,0 +1,15 @@
+<html>
+<</head>
+<style>
+	body{
+		background-Image : url("Shopping.jpg");
+		background-repeat : no repeat;
+		background-attachment: fixed;
+		background-size : 100% 100%;
+	}
+</style>
+</head>
+<body>
+	<h2>Shopsy</h2>
+</body>
+</html>

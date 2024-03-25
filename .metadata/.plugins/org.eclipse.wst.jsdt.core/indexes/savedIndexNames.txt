@@ -1,0 +1,19 @@
+INDEX VERSION 1.4+C:\Users\vyshu\OneDrive\Desktop\Advancejava\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2318349534.index
+2352841746.index
+563011577.index
+3020400996.index
+3861961647.index
+1729233132.index
+822148883.index
+99884908.index
+3780142202.index
+1426133195.index
+283613690.index
+598560744.index
+2974776448.index
+2848356337.index
+805532240.index
+1229959609.index
+2386925250.index
+824051038.index

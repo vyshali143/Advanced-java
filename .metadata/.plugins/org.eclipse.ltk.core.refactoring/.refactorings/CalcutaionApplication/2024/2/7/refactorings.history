@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;CalcutaionApplication/src/main/webapp/Calculation.html&apos; to &apos;CalculationServlet.html&apos;" description="Rename resource &apos;Calculation.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/Calculation.html" name="CalculationServlet.html" stamp="1707988640280" updateReferences="true"/>
+</session>

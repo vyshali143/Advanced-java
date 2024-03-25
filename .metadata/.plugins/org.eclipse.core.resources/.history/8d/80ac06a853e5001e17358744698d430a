@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shopsy</title>
+</head>
+<body>
+	<div class="Container mt-5 text-center">	
+<h2>Shopsy</h2>
+<input type="text" name="Shopsy">
+<form method="post" action="./ProServlet" enctype="multipart/form-data"
+
+<label>UserName</label>
+<input type="text" name="UserName" Placeholder="Enter username" required/>
+
+<label>Password</label>
+<input type="text" name="Password" Placeholder="Enter Password" required/>
+
+<input type="Login" value="Login" />
+</body>
+</html>
